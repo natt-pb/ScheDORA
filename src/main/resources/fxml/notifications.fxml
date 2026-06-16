@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="16" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.classroomscheduler.controller.NotificationsController"
+      styleClass="content-area" stylesheets="@../css/style.css">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="16">
+        <Label text="🔔 Notifications" styleClass="section-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Mark All as Read" onAction="#handleMarkAllRead" styleClass="btn-secondary"/>
+        <Button text="Refresh" onAction="#handleRefresh" styleClass="btn-primary"/>
+    </HBox>
+
+    <TableView fx:id="tblNotifications" VBox.vgrow="ALWAYS" styleClass="data-table">
+        <columns>
+            <TableColumn fx:id="colStatus" text="" prefWidth="40"/>
+            <TableColumn fx:id="colTitle" text="Title" prefWidth="200"/>
+            <TableColumn fx:id="colMessage" text="Message" prefWidth="400"/>
+            <TableColumn fx:id="colType" text="Type" prefWidth="120"/>
+            <TableColumn fx:id="colDate" text="Date" prefWidth="150"/>
+            <TableColumn fx:id="colAction" text="" prefWidth="80"/>
+        </columns>
+    </TableView>
+</VBox>

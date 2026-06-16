@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.UserController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24">
+        <!-- Page Header -->
+        <VBox spacing="4">
+            <Label text="User Management" styleClass="page-title"/>
+            <Label text="Create, read, update, and delete portal users. Bulk import students via CSV." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <GridPane hgap="24" vgap="20">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="35"/>
+                <ColumnConstraints percentWidth="65"/>
+            </columnConstraints>
+            
+            <!-- Left Form Panel -->
+            <VBox GridPane.columnIndex="0" styleClass="glass-panel" spacing="16">
+                <Label text="User Account Details" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                
+                <VBox spacing="12">
+                    <VBox spacing="6">
+                        <Label text="Full Name" styleClass="filter-label"/>
+                        <TextField fx:id="txtName" promptText="e.g. Dr. Arthur" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                    </VBox>
+                    
+                    <VBox spacing="6">
+                        <Label text="Username (Login ID)" styleClass="filter-label"/>
+                        <TextField fx:id="txtUsername" promptText="e.g. PS/CSC/23/0201" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                    </VBox>
+                    
+                    <VBox spacing="6">
+                        <Label text="Password" styleClass="filter-label"/>
+                        <PasswordField fx:id="txtPassword" promptText="Enter password..." styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                    </VBox>
+                    
+                    <VBox spacing="6">
+                        <Label text="Portal Access Role" styleClass="filter-label"/>
+                        <ComboBox fx:id="cmbRole" promptText="Select Role" styleClass="filter-combo" maxWidth="Infinity"/>
+                    </VBox>
+                    
+                    <!-- Student-specific fields (shown when STUDENT or STUDENT_REP) -->
+                    <VBox fx:id="studentFields" spacing="12" visible="false" managed="false">
+                        <Separator/>
+                        <Label text="Student Details" style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                        <VBox spacing="6">
+                            <Label text="Programme" styleClass="filter-label"/>
+                            <TextField fx:id="txtProgramme" promptText="e.g. Computer Science" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                        </VBox>
+                        <HBox spacing="10">
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Level" styleClass="filter-label"/>
+                                <ComboBox fx:id="cmbLevel" promptText="Level" styleClass="filter-combo" maxWidth="Infinity"/>
+                            </VBox>
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Semester" styleClass="filter-label"/>
+                                <ComboBox fx:id="cmbSemester" promptText="Sem" styleClass="filter-combo" maxWidth="Infinity"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Staff-specific fields (shown when LECTURER or FACILITY_MANAGER) -->
+                    <VBox fx:id="staffFields" spacing="12" visible="false" managed="false">
+                        <Separator/>
+                        <Label text="Staff Details" style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                        <VBox spacing="6">
+                            <Label text="Staff ID" styleClass="filter-label"/>
+                            <TextField fx:id="txtStaffId" promptText="e.g. STF-001" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                        </VBox>
+                        <VBox spacing="6">
+                            <Label text="Department" styleClass="filter-label"/>
+                            <TextField fx:id="txtDepartment" promptText="e.g. Computer Science" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                        </VBox>
+                    </VBox>
+                </VBox>
+                
+                <Separator/>
+                
+                <!-- Action Buttons -->
+                <VBox spacing="10">
+                    <Button fx:id="btnAdd" onAction="#handleAddUser" text="Register User" styleClass="btn-primary" maxWidth="Infinity"/>
+                    <HBox spacing="10">
+                        <Button fx:id="btnUpdate" onAction="#handleUpdateUser" text="Update" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        <Button fx:id="btnDelete" onAction="#handleDeleteUser" text="Delete" styleClass="nav-item-error" style="-fx-border-color: -theme-error; -fx-border-radius: 8px; -fx-border-width: 1; -fx-font-weight: bold; -fx-padding: 10 20;" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    </HBox>
+                    <Button onAction="#handleClearForm" text="Clear Form" styleClass="btn-secondary" maxWidth="Infinity" style="-fx-font-weight: normal;"/>
+                    <Separator/>
+                    <Button onAction="#handleImportCsv" text="📥 Import Students (CSV)" styleClass="btn-secondary" maxWidth="Infinity"/>
+                </VBox>
+            </VBox>
+            
+            <!-- Right Registry Table -->
+            <VBox GridPane.columnIndex="1" styleClass="glass-panel" spacing="16">
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="Registered Portal Users" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <HBox spacing="6" alignment="CENTER_LEFT" style="-fx-background-color: -theme-surface-low; -fx-background-radius: 20px; -fx-padding: 4 12;" prefWidth="240">
+                        <Label text="🔍" style="-fx-font-size: 12px;"/>
+                        <TextField fx:id="txtSearch" onKeyReleased="#handleSearchKey" promptText="Search users..." styleClass="search-field" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 2;" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </HBox>
+                
+                <TableView fx:id="tblUsers" prefHeight="480" onMouseClicked="#handleTableClick">
+                    <columns>
+                        <TableColumn fx:id="colUserId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colName" text="Full Name" prefWidth="160"/>
+                        <TableColumn fx:id="colUsername" text="Username" prefWidth="140"/>
+                        <TableColumn fx:id="colRole" text="Access Role" prefWidth="130"/>
+                        <TableColumn fx:id="colProgramme" text="Programme / Dept" prefWidth="140"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </GridPane>
+    </VBox>
+</ScrollPane>

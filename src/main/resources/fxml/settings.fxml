@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.SettingsController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24">
+        <!-- Page Header -->
+        <VBox spacing="4">
+            <Label text="Settings" styleClass="page-title"/>
+            <Label text="Customise your experience. Changes are applied immediately." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <GridPane hgap="24" vgap="24">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50"/>
+                <ColumnConstraints percentWidth="50"/>
+            </columnConstraints>
+            
+            <!-- ══════════ LEFT COLUMN ══════════ -->
+            
+            <!-- Theme Customisation -->
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="settings-section" spacing="16">
+                <VBox spacing="4">
+                    <Label text="🎨  Theme" styleClass="settings-section-title"/>
+                    <Label text="Choose your preferred visual mode" styleClass="settings-section-subtitle"/>
+                </VBox>
+                
+                <HBox spacing="12">
+                    <!-- Light Mode Option -->
+                    <VBox fx:id="themeLightOption" spacing="8" alignment="CENTER" styleClass="theme-option" HBox.hgrow="ALWAYS" style="-fx-cursor: hand;">
+                        <HBox spacing="4" alignment="CENTER">
+                            <Region prefWidth="16" prefHeight="16" style="-fx-background-color: #F8FAFC; -fx-background-radius: 4; -fx-border-color: #D1D9E6; -fx-border-radius: 4; -fx-border-width: 1;"/>
+                            <Region prefWidth="16" prefHeight="16" style="-fx-background-color: #FFFFFF; -fx-background-radius: 4; -fx-border-color: #D1D9E6; -fx-border-radius: 4; -fx-border-width: 1;"/>
+                            <Region prefWidth="16" prefHeight="16" style="-fx-background-color: #E2E8F0; -fx-background-radius: 4; -fx-border-color: #D1D9E6; -fx-border-radius: 4; -fx-border-width: 1;"/>
+                        </HBox>
+                        <Label text="Light" style="-fx-font-size: 12px; -fx-font-weight: bold;"/>
+                        <Label text="Clean &amp; bright" style="-fx-font-size: 10px; -fx-text-fill: -theme-on-surface-variant;"/>
+                    </VBox>
+                    
+                    <!-- Dark Mode Option -->
+                    <VBox fx:id="themeDarkOption" spacing="8" alignment="CENTER" styleClass="theme-option-selected" HBox.hgrow="ALWAYS" style="-fx-cursor: hand;">
+                        <HBox spacing="4" alignment="CENTER">
+                            <Region prefWidth="16" prefHeight="16" style="-fx-background-color: #111827; -fx-background-radius: 4;"/>
+                            <Region prefWidth="16" prefHeight="16" style="-fx-background-color: #1A2235; -fx-background-radius: 4;"/>
+                            <Region prefWidth="16" prefHeight="16" style="-fx-background-color: #222D42; -fx-background-radius: 4;"/>
+                        </HBox>
+                        <Label text="Dark" style="-fx-font-size: 12px; -fx-font-weight: bold;"/>
+                        <Label text="Deep charcoal" style="-fx-font-size: 10px; -fx-text-fill: -theme-on-surface-variant;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+            
+            <!-- Accent Colour -->
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="settings-section" spacing="16">
+                <VBox spacing="4">
+                    <Label text="✨  Accent Colour" styleClass="settings-section-title"/>
+                    <Label text="Applied to buttons, badges, and active items" styleClass="settings-section-subtitle"/>
+                </VBox>
+                
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <StackPane fx:id="accentIndigo" style="-fx-cursor: hand;">
+                        <Circle radius="18" style="-fx-fill: #6C8EEF;"/>
+                        <Circle fx:id="accentIndigoRing" radius="22" style="-fx-fill: transparent; -fx-stroke: white; -fx-stroke-width: 2;"/>
+                    </StackPane>
+                    <StackPane fx:id="accentTeal" style="-fx-cursor: hand;">
+                        <Circle radius="18" style="-fx-fill: #14B8A6;"/>
+                        <Circle fx:id="accentTealRing" radius="22" style="-fx-fill: transparent; -fx-stroke: transparent; -fx-stroke-width: 2;"/>
+                    </StackPane>
+                    <StackPane fx:id="accentAmber" style="-fx-cursor: hand;">
+                        <Circle radius="18" style="-fx-fill: #F59E0B;"/>
+                        <Circle fx:id="accentAmberRing" radius="22" style="-fx-fill: transparent; -fx-stroke: transparent; -fx-stroke-width: 2;"/>
+                    </StackPane>
+                    <StackPane fx:id="accentRose" style="-fx-cursor: hand;">
+                        <Circle radius="18" style="-fx-fill: #F43F5E;"/>
+                        <Circle fx:id="accentRoseRing" radius="22" style="-fx-fill: transparent; -fx-stroke: transparent; -fx-stroke-width: 2;"/>
+                    </StackPane>
+                </HBox>
+            </VBox>
+            
+            <!-- Display Preferences -->
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="settings-section" spacing="16">
+                <VBox spacing="4">
+                    <Label text="🖥  Display Preferences" styleClass="settings-section-title"/>
+                    <Label text="Adjust layout and density options" styleClass="settings-section-subtitle"/>
+                </VBox>
+                
+                <VBox spacing="14">
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="Font Size" style="-fx-min-width: 120;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="cmbFontSize" styleClass="filter-combo" prefWidth="140"/>
+                    </HBox>
+                    
+                    <Separator/>
+                    
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="Collapsed Sidebar" style="-fx-font-weight: bold;"/>
+                            <Label text="Start with sidebar collapsed by default" styleClass="settings-section-subtitle"/>
+                        </VBox>
+                        <CheckBox fx:id="chkCollapsedSidebar"/>
+                    </HBox>
+                    
+                    <Separator/>
+                    
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="Compact Table Rows" style="-fx-font-weight: bold;"/>
+                            <Label text="Reduce row padding in data tables" styleClass="settings-section-subtitle"/>
+                        </VBox>
+                        <CheckBox fx:id="chkCompactTables"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <!-- ══════════ RIGHT COLUMN ══════════ -->
+            
+            <!-- Account Settings -->
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="settings-section" spacing="16">
+                <VBox spacing="4">
+                    <Label text="👤  Account" styleClass="settings-section-title"/>
+                    <Label text="Manage your profile and credentials" styleClass="settings-section-subtitle"/>
+                </VBox>
+                
+                <VBox spacing="14">
+                    <VBox spacing="6">
+                        <Label text="Display Name" styleClass="filter-label"/>
+                        <TextField fx:id="txtDisplayName" promptText="Your name..." styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;" maxWidth="Infinity"/>
+                    </VBox>
+                    
+                    <Separator/>
+                    
+                    <VBox spacing="6">
+                        <Label text="Current Password" styleClass="filter-label"/>
+                        <PasswordField fx:id="txtCurrentPassword" promptText="••••••••" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;" maxWidth="Infinity"/>
+                    </VBox>
+                    
+                    <VBox spacing="6">
+                        <Label text="New Password" styleClass="filter-label"/>
+                        <PasswordField fx:id="txtNewPassword" promptText="Enter new password..." styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;" maxWidth="Infinity"/>
+                    </VBox>
+                    
+                    <VBox spacing="6">
+                        <Label text="Confirm New Password" styleClass="filter-label"/>
+                        <PasswordField fx:id="txtConfirmPassword" promptText="Confirm new password..." styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;" maxWidth="Infinity"/>
+                    </VBox>
+                    
+                    <HBox spacing="10">
+                        <Button onAction="#handleSaveAccount" text="Save Changes" styleClass="btn-primary" style="-fx-padding: 8 20;"/>
+                        <Button onAction="#handleChangePassword" text="Update Password" styleClass="btn-secondary" style="-fx-padding: 8 20;"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <!-- Notification Preferences -->
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2" styleClass="settings-section" spacing="16">
+                <VBox spacing="4">
+                    <Label text="🔔  Notification Preferences" styleClass="settings-section-title"/>
+                    <Label text="Control which notifications you receive" styleClass="settings-section-subtitle"/>
+                </VBox>
+                
+                <VBox spacing="14">
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="Booking Approved" style="-fx-font-weight: bold;"/>
+                            <Label text="Notify when a booking request is approved" styleClass="settings-section-subtitle"/>
+                        </VBox>
+                        <CheckBox fx:id="chkNotifApproved" selected="true"/>
+                    </HBox>
+                    
+                    <Separator/>
+                    
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="Booking Rejected" style="-fx-font-weight: bold;"/>
+                            <Label text="Notify when a booking request is rejected" styleClass="settings-section-subtitle"/>
+                        </VBox>
+                        <CheckBox fx:id="chkNotifRejected" selected="true"/>
+                    </HBox>
+                    
+                    <Separator/>
+                    
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="New Announcement" style="-fx-font-weight: bold;"/>
+                            <Label text="Notify on system-wide announcements" styleClass="settings-section-subtitle"/>
+                        </VBox>
+                        <CheckBox fx:id="chkNotifAnnouncement" selected="true"/>
+                    </HBox>
+                    
+                    <Separator/>
+                    
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="Timetable Change" style="-fx-font-weight: bold;"/>
+                            <Label text="Notify when the official timetable is updated" styleClass="settings-section-subtitle"/>
+                        </VBox>
+                        <CheckBox fx:id="chkNotifTimetable" selected="true"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </GridPane>
+    </VBox>
+</ScrollPane>

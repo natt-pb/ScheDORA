@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.LoginController" stylesheets="@../css/style.css" styleClass="login-root" spacing="0" alignment="CENTER" style="-fx-background-color: #111827;">
+    
+    <!-- Left Branding Panel -->
+    <VBox HBox.hgrow="ALWAYS" alignment="TOP_LEFT" spacing="0" style="-fx-background-color: linear-gradient(to bottom, #0F172A, #1E293B); -fx-padding: 40 40 30 40;" maxWidth="560">
+        
+        <!-- Logo + Brand -->
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <ImageView fitWidth="44" fitHeight="44" preserveRatio="true" smooth="true">
+                <image>
+                    <Image url="@../images/app_icon.png"/>
+                </image>
+            </ImageView>
+            <VBox spacing="2">
+                <Label text="ScheDORA" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="University of Cape Coast" style="-fx-font-size: 12px; -fx-text-fill: #94A3B8;"/>
+            </VBox>
+        </HBox>
+        
+        <Region VBox.vgrow="ALWAYS" minHeight="80"/>
+        
+        <!-- Hero Text -->
+        <VBox spacing="10">
+            <Label text="Lecture Theatre Booking System" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #94A3B8; -fx-padding: 0 0 4 0;"/>
+            <Label text="Access a seamless platform for managing academic spaces. Real-time availability, secure reservations, and integrated resource management for our university community." wrapText="true" style="-fx-font-size: 14px; -fx-text-fill: #CBD5E1; -fx-line-spacing: 3;"/>
+        </VBox>
+        
+        <Region minHeight="30"/>
+        
+        <!-- Feature Chips -->
+        <VBox spacing="10">
+            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="login-feature-chip">
+                <Label text="✓" style="-fx-font-size: 16px; -fx-text-fill: #22C55E;"/>
+                <Label text="Secure Single Sign-On" style="-fx-font-size: 13px; -fx-text-fill: #E2E8F0; -fx-font-weight: bold;"/>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="login-feature-chip">
+                <Label text="📅" style="-fx-font-size: 16px;"/>
+                <Label text="Live Schedule Updates" style="-fx-font-size: 13px; -fx-text-fill: #E2E8F0; -fx-font-weight: bold;"/>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="login-feature-chip">
+                <Label text="🎧" style="-fx-font-size: 16px;"/>
+                <Label text="24/7 Administrative Support" style="-fx-font-size: 13px; -fx-text-fill: #E2E8F0; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+        
+        <Region VBox.vgrow="ALWAYS"/>
+        
+        <!-- Footer -->
+        <Label text="© 2026 University of Cape Coast. All rights reserved." styleClass="login-footer"/>
+    </VBox>
+    
+    <!-- Right Login Form -->
+    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" style="-fx-background-color: #111827;">
+        <VBox alignment="TOP_LEFT" spacing="24" maxWidth="400" styleClass="login-right-panel" style="-fx-padding: 40;">
+            
+            <!-- Header -->
+            <VBox spacing="6">
+                <Label text="Sign In" styleClass="login-title"/>
+                <Label text="Welcome back! Please enter your details to access the dashboard." styleClass="login-subtitle" wrapText="true"/>
+            </VBox>
+            
+            <Region minHeight="4"/>
+            
+            <!-- Registration Number Field -->
+            <VBox spacing="6">
+                <Label text="Registration Number" styleClass="login-field-label"/>
+                <TextField fx:id="loginUsername" promptText="e.g. PS/CSC/23/0201" styleClass="login-field" maxWidth="Infinity"/>
+            </VBox>
+            
+            <!-- Password Field -->
+            <VBox spacing="6">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Password" styleClass="login-field-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Forgot Password?" styleClass="login-link"/>
+                </HBox>
+                <PasswordField fx:id="loginPassword" promptText="••••••••" styleClass="login-field" maxWidth="Infinity"/>
+            </VBox>
+            
+            <!-- Remember Me -->
+            <CheckBox text="Remember me" style="-fx-text-fill: #94A3B8; -fx-font-size: 12px;"/>
+            
+            <!-- Sign In Button -->
+            <Button fx:id="btnSignIn" onAction="#handleSignIn" text="Sign In" styleClass="login-btn" maxWidth="Infinity"/>
+            
+            <Region minHeight="8"/>
+            
+            <!-- Status Footer -->
+            <HBox alignment="CENTER" spacing="20">
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Circle radius="4" style="-fx-fill: #22C55E;"/>
+                    <Label text="SYSTEM OPERATIONAL" style="-fx-font-size: 10px; -fx-text-fill: #64748B; -fx-font-weight: bold;"/>
+                </HBox>
+                <Label text="Privacy Policy" styleClass="login-link" style="-fx-font-size: 10px;"/>
+                <Label text="Terms of Service" styleClass="login-link" style="-fx-font-size: 10px;"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</HBox>

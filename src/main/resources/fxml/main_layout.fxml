@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.MainLayoutController" stylesheets="@../css/style.css" styleClass="root">
+    
+    <!-- Left Navigation Sidebar -->
+    <left>
+        <VBox prefWidth="250" styleClass="sidebar">
+            <!-- Brand header -->
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets bottom="24" left="8" right="8" top="8"/>
+                </padding>
+                <!-- Brand Logo -->
+                <ImageView fitWidth="38" fitHeight="38" preserveRatio="true" smooth="true">
+                    <image>
+                        <Image url="@../images/app_icon.png"/>
+                    </image>
+                </ImageView>
+                <VBox alignment="CENTER_LEFT">
+                    <Label text="ScheDORA" styleClass="brand-title" style="-fx-font-size: 20px;"/>
+                    <Label text="Book Smart. Learn Better." styleClass="brand-subtitle"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Navigation Items Scrollable -->
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+                <VBox spacing="6">
+                    <!-- Dashboard (All Roles) -->
+                    <Button fx:id="btnNavDashboard" onAction="#handleNavDashboard" text="📊   Dashboard" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- Official Timetable (All Roles) -->
+                    <Button fx:id="btnNavSchedule" onAction="#handleNavSchedule" text="📅   Official Timetable" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- Availability Search (All except Student) -->
+                    <Button fx:id="btnNavSearch" onAction="#handleNavSearch" text="🔍   Search Availability" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- New Booking Request (Admin, Lecturer, Student Rep) -->
+                    <Button fx:id="btnNavBooking" onAction="#handleNavBooking" text="➕   Request Booking" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- My Reservations (Admin, Lecturer, Student Rep, FM) -->
+                    <Button fx:id="btnNavReservations" onAction="#handleNavReservations" text="🎟️   My Reservations" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- Booking Approvals (Admin, FM) -->
+                    <Button fx:id="btnNavApproval" onAction="#handleNavApproval" text="✓   Booking Approvals" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- Block Management (Admin only) -->
+                    <Button fx:id="btnNavBlocks" onAction="#handleNavBlocks" text="🏢   Manage Blocks" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- Room Management CRUD (Admin, FM) -->
+                    <Button fx:id="btnNavRoom" onAction="#handleNavRoom" text="🚪   Manage Rooms" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+
+                    <!-- User Management (Admin Only) -->
+                    <Button fx:id="btnNavUsers" onAction="#handleNavUsers" text="👥   Manage Users" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- Reports (Admin Only) -->
+                    <Button fx:id="btnNavReports" onAction="#handleNavReports" text="📈   Reports" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    
+                    <!-- Notifications (All Roles) -->
+                    <HBox alignment="CENTER_LEFT">
+                        <Button fx:id="btnNavNotifications" onAction="#handleNavNotifications" text="🔔   Notifications" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblNotifBadge" text="0" visible="false" managed="false" style="-fx-background-color: -theme-error; -fx-text-fill: white; -fx-background-radius: 12px; -fx-padding: 2 8; -fx-font-size: 10px; -fx-font-weight: bold; -fx-translate-x: -16;"/>
+                    </HBox>
+                </VBox>
+            </ScrollPane>
+            
+            <!-- Sidebar Footer -->
+            <VBox spacing="8" style="-fx-border-color: -theme-outline-variant transparent transparent transparent; -fx-border-width: 1 0 0 0; -fx-padding: 16 0 0 0;">
+                <Button fx:id="btnNavSettings" onAction="#handleNavSettings" text="⚙️   Settings" styleClass="nav-item" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="btnLogout" onAction="#handleLogout" text="🚪   Logout" styleClass="nav-item-error" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+            </VBox>
+        </VBox>
+    </left>
+    
+    <!-- Main Content Panel -->
+    <center>
+        <BorderPane>
+            <!-- TopNavBar (simplified - no theme selector) -->
+            <top>
+                <HBox styleClass="top-bar" prefHeight="56" alignment="CENTER_LEFT" spacing="16">
+                    <Region HBox.hgrow="ALWAYS"/>
+                    
+                    <!-- User Avatar & Info -->
+                    <HBox alignment="CENTER_RIGHT" spacing="12">
+                        <StackPane>
+                            <Circle radius="18" styleClass="avatar-circle"/>
+                            <Label fx:id="topUserInitialLabel" text="U" style="-fx-font-weight: bold; -fx-text-fill: -theme-primary;"/>
+                        </StackPane>
+                        <VBox alignment="CENTER_LEFT">
+                            <Label fx:id="topUsernameLabel" text="User" style="-fx-font-weight: bold; -fx-font-size: 13px;"/>
+                            <Label fx:id="topUserRoleLabel" text="Role" style="-fx-font-size: 10px; -fx-text-fill: -theme-on-surface-variant;"/>
+                        </VBox>
+                    </HBox>
+                </HBox>
+            </top>
+            
+            <!-- Mount point for child views -->
+            <center>
+                <StackPane fx:id="contentArea"/>
+            </center>
+        </BorderPane>
+    </center>
+</BorderPane>

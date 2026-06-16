@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.TimetableController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24">
+        <!-- Page Header -->
+        <VBox spacing="4">
+            <Label text="Official Timetable" styleClass="page-title"/>
+            <Label text="Centralized view of the official university semester course schedule." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <!-- Filter Bar -->
+        <HBox styleClass="glass-panel" spacing="16" alignment="CENTER_LEFT" style="-fx-padding: 12 16;">
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Department" styleClass="filter-label"/>
+                <ComboBox fx:id="departmentFilter" onAction="#handleFilterChange" promptText="All Departments" styleClass="filter-combo" maxWidth="Infinity"/>
+            </VBox>
+            
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Level" styleClass="filter-label"/>
+                <ComboBox fx:id="levelFilter" onAction="#handleFilterChange" promptText="All Levels" styleClass="filter-combo" maxWidth="Infinity"/>
+            </VBox>
+            
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Venue Block" styleClass="filter-label"/>
+                <ComboBox fx:id="venueFilter" onAction="#handleFilterChange" promptText="All Blocks" styleClass="filter-combo" maxWidth="Infinity"/>
+            </VBox>
+
+            <VBox spacing="4" prefWidth="200">
+                <Label text="Search" styleClass="filter-label"/>
+                <TextField fx:id="txtSearch" onKeyReleased="#handleSearchKey" promptText="Search code or lecturer..." styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+            </VBox>
+            
+            <VBox spacing="4">
+                <Label text=" " styleClass="filter-label"/>
+                <Button fx:id="btnImportCsv" onAction="#handleImportCsv" text="📥 Import CSV" styleClass="btn-secondary" style="-fx-padding: 8 16;"/>
+            </VBox>
+        </HBox>
+        
+        <!-- Timetable Data Table -->
+        <VBox styleClass="glass-panel" spacing="12">
+            <TableView fx:id="tblTimetable" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colCourseCode" text="Course Code" prefWidth="120"/>
+                    <TableColumn fx:id="colCourseName" text="Course Name" prefWidth="250"/>
+                    <TableColumn fx:id="colLecturer" text="Lecturer" prefWidth="180"/>
+                    <TableColumn fx:id="colRoomName" text="Room Venue" prefWidth="150"/>
+                    <TableColumn fx:id="colDay" text="Day of Week" prefWidth="120"/>
+                    <TableColumn fx:id="colStartTime" text="Start Time" prefWidth="100"/>
+                    <TableColumn fx:id="colEndTime" text="End Time" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</ScrollPane>

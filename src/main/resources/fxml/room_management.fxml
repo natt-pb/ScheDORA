@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.RoomController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24">
+        <!-- Page Header -->
+        <VBox spacing="4">
+            <Label text="Classroom Management" styleClass="page-title"/>
+            <Label text="Create, read, update, and delete campus classroom profiles. Assign rooms to blocks." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <GridPane hgap="24" vgap="20">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="35"/>
+                <ColumnConstraints percentWidth="65"/>
+            </columnConstraints>
+            
+            <!-- Left Form Panel -->
+            <VBox GridPane.columnIndex="0" styleClass="glass-panel" spacing="16">
+                <Label text="Room Profile Details" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                
+                <VBox spacing="12">
+                    <VBox spacing="6">
+                        <Label text="Room Name" styleClass="filter-label"/>
+                        <TextField fx:id="txtRoomName" promptText="e.g. SW 12" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                    </VBox>
+                    
+                    <VBox spacing="6">
+                        <Label text="Block" styleClass="filter-label"/>
+                        <ComboBox fx:id="cmbBlock" promptText="Select Block" styleClass="filter-combo" maxWidth="Infinity"/>
+                    </VBox>
+                    
+                    <VBox spacing="6">
+                        <Label text="Student Capacity" styleClass="filter-label"/>
+                        <TextField fx:id="txtCapacity" promptText="e.g. 150" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                    </VBox>
+                    
+                    <VBox spacing="6">
+                        <Label text="Room Type" styleClass="filter-label"/>
+                        <ComboBox fx:id="cmbRoomType" promptText="Select Type" styleClass="filter-combo" maxWidth="Infinity"/>
+                    </VBox>
+                    
+                    <Separator/>
+                    
+                    <!-- Facility Checkboxes -->
+                    <VBox spacing="8">
+                        <Label text="Room Facilities" styleClass="filter-label"/>
+                        <CheckBox fx:id="chkProjector" text="📽 Projector" style="-fx-font-size: 13px;"/>
+                        <CheckBox fx:id="chkAc" text="❄ Air Conditioning" style="-fx-font-size: 13px;"/>
+                        <CheckBox fx:id="chkWhiteboard" text="📝 Whiteboard" style="-fx-font-size: 13px;"/>
+                    </VBox>
+                </VBox>
+                
+                <Separator/>
+                
+                <!-- Action Buttons -->
+                <VBox spacing="10">
+                    <Button fx:id="btnAdd" onAction="#handleAddRoom" text="Add New Room" styleClass="btn-primary" maxWidth="Infinity"/>
+                    <HBox spacing="10">
+                        <Button fx:id="btnUpdate" onAction="#handleUpdateRoom" text="Update" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        <Button fx:id="btnDelete" onAction="#handleDeleteRoom" text="Delete" styleClass="nav-item-error" style="-fx-border-color: -theme-error; -fx-border-radius: 8px; -fx-border-width: 1; -fx-font-weight: bold; -fx-padding: 10 20;" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    </HBox>
+                    <Button onAction="#handleClearForm" text="Clear Form" styleClass="btn-secondary" maxWidth="Infinity" style="-fx-font-weight: normal;"/>
+                </VBox>
+            </VBox>
+            
+            <!-- Right Registry Table -->
+            <VBox GridPane.columnIndex="1" styleClass="glass-panel" spacing="16">
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="Classrooms Registry" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <HBox spacing="6" alignment="CENTER_LEFT" style="-fx-background-color: -theme-surface-low; -fx-background-radius: 20px; -fx-padding: 4 12;" prefWidth="240">
+                        <Label text="🔍" style="-fx-font-size: 12px;"/>
+                        <TextField fx:id="txtSearch" onKeyReleased="#handleSearchKey" promptText="Search rooms..." styleClass="search-field" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 2;" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </HBox>
+                
+                <TableView fx:id="tblRooms" prefHeight="480" onMouseClicked="#handleTableClick">
+                    <columns>
+                        <TableColumn fx:id="colRoomId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colRoomName" text="Room Name" prefWidth="110"/>
+                        <TableColumn fx:id="colBlock" text="Block" prefWidth="120"/>
+                        <TableColumn fx:id="colCapacity" text="Capacity" prefWidth="80"/>
+                        <TableColumn fx:id="colRoomType" text="Type" prefWidth="110"/>
+                        <TableColumn fx:id="colFacilities" text="Facilities" prefWidth="100"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </GridPane>
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.BlockController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24">
+        <!-- Page Header -->
+        <VBox spacing="4">
+            <Label text="Block Management" styleClass="page-title"/>
+            <Label text="Manage campus blocks and assign Facility Managers (Main Admin only)." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <GridPane hgap="24" vgap="20">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="35"/>
+                <ColumnConstraints percentWidth="65"/>
+            </columnConstraints>
+            
+            <!-- Left Form Panel -->
+            <VBox GridPane.columnIndex="0" spacing="20">
+                <!-- Block Form -->
+                <VBox styleClass="glass-panel" spacing="16">
+                    <Label text="Block Details" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                    
+                    <VBox spacing="12">
+                        <VBox spacing="6">
+                            <Label text="Block Name" styleClass="filter-label"/>
+                            <TextField fx:id="txtBlockName" promptText="e.g. NLT Block" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                        </VBox>
+                    </VBox>
+                    
+                    <Separator/>
+                    
+                    <!-- Action Buttons -->
+                    <VBox spacing="10">
+                        <Button onAction="#handleAddBlock" text="Add Block" styleClass="btn-primary" maxWidth="Infinity"/>
+                        <HBox spacing="10">
+                            <Button onAction="#handleUpdateBlock" text="Update" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                            <Button onAction="#handleDeleteBlock" text="Delete" styleClass="nav-item-error" style="-fx-border-color: -theme-error; -fx-border-radius: 8px; -fx-border-width: 1; -fx-font-weight: bold; -fx-padding: 10 20;" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        </HBox>
+                        <Button onAction="#handleClearForm" text="Clear Form" styleClass="btn-secondary" maxWidth="Infinity" style="-fx-font-weight: normal;"/>
+                    </VBox>
+                </VBox>
+                
+                <!-- Manager Assignment -->
+                <VBox styleClass="glass-panel" spacing="16">
+                    <Label text="Assign Facility Manager" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                    
+                    <VBox spacing="12">
+                        <VBox spacing="6">
+                            <Label text="Select Block" styleClass="filter-label"/>
+                            <ComboBox fx:id="cmbAssignBlock" promptText="Select Block" styleClass="filter-combo" maxWidth="Infinity"/>
+                        </VBox>
+                        <VBox spacing="6">
+                            <Label text="Select Facility Manager" styleClass="filter-label"/>
+                            <ComboBox fx:id="cmbAssignManager" promptText="Select Manager" styleClass="filter-combo" maxWidth="Infinity"/>
+                        </VBox>
+                    </VBox>
+                    
+                    <HBox spacing="10">
+                        <Button onAction="#handleAssignManager" text="Assign" styleClass="btn-primary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        <Button onAction="#handleRemoveManager" text="Remove" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <!-- Right: Blocks Table -->
+            <VBox GridPane.columnIndex="1" spacing="20">
+                <VBox styleClass="glass-panel" spacing="16">
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="Campus Blocks" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button onAction="#handleRefresh" text="🔄 Refresh" styleClass="btn-secondary" style="-fx-padding: 6 12;"/>
+                    </HBox>
+                    
+                    <TableView fx:id="tblBlocks" prefHeight="200" onMouseClicked="#handleBlockTableClick">
+                        <columns>
+                            <TableColumn fx:id="colBlockId" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="colBlockName" text="Block Name" prefWidth="200"/>
+                            <TableColumn fx:id="colManagers" text="Assigned Manager(s)" prefWidth="250"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+                
+                <!-- Block-Manager Assignments Table -->
+                <VBox styleClass="glass-panel" spacing="16">
+                    <Label text="Block-Manager Assignments" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                    
+                    <TableView fx:id="tblAssignments" prefHeight="200">
+                        <columns>
+                            <TableColumn fx:id="colAssignBlock" text="Block" prefWidth="200"/>
+                            <TableColumn fx:id="colAssignManager" text="Facility Manager" prefWidth="200"/>
+                            <TableColumn fx:id="colAssignAction" text="Action" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </VBox>
+        </GridPane>
+    </VBox>
+</ScrollPane>

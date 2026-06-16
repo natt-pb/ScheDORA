@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.BookingController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24" maxWidth="800" alignment="TOP_CENTER" style="-fx-padding: 24 100;">
+        <!-- Page Header -->
+        <VBox spacing="4" alignment="TOP_LEFT" maxWidth="Infinity">
+            <Label text="Request Alternative Classroom" styleClass="page-title"/>
+            <Label text="Submit a relocation booking request. Conflict detection will automatically verify room vacancies." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <!-- Booking Form Panel -->
+        <VBox styleClass="glass-panel" spacing="20" alignment="TOP_LEFT" maxWidth="Infinity">
+            <Label text="Reservation Request Form" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+            
+            <GridPane hgap="20" vgap="16">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+                
+                <!-- Course -->
+                <VBox spacing="6" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Course Code &amp; Name *" styleClass="filter-label"/>
+                    <TextField fx:id="txtCourse" promptText="e.g. CSC 301 - DB Systems" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                </VBox>
+                
+                <!-- Lecturer -->
+                <VBox spacing="6" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Lecturer Name *" styleClass="filter-label"/>
+                    <TextField fx:id="txtLecturer" promptText="e.g. Dr. Arthur" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                </VBox>
+                
+                <!-- Representative Name -->
+                <VBox spacing="6" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Representative Name *" styleClass="filter-label"/>
+                    <TextField fx:id="txtRepresentative" promptText="Your name..." styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                </VBox>
+                
+                <!-- Booking Type -->
+                <VBox spacing="6" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Booking Type *" styleClass="filter-label"/>
+                    <ComboBox fx:id="cmbBookingType" promptText="Select Type" styleClass="filter-combo" maxWidth="Infinity"/>
+                </VBox>
+                
+                <!-- Original Room -->
+                <VBox spacing="6" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="Original Room (Optional)" styleClass="filter-label"/>
+                    <TextField fx:id="txtOriginalRoom" promptText="e.g. SW 12" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+                </VBox>
+                
+                <!-- Requested Room -->
+                <VBox spacing="6" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <Label text="Requested Room *" styleClass="filter-label"/>
+                    <ComboBox fx:id="cmbRequestedRoom" promptText="Select Target Room" styleClass="filter-combo" maxWidth="Infinity"/>
+                </VBox>
+                
+                <!-- Booking Date -->
+                <VBox spacing="6" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <Label text="Relocation Date *" styleClass="filter-label"/>
+                    <DatePicker fx:id="dpBookingDate" promptText="Choose Date" style="-fx-font-size: 13px;" maxWidth="Infinity"/>
+                </VBox>
+                
+                <!-- Time Selection -->
+                <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3" alignment="BOTTOM_CENTER">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Start Time *" styleClass="filter-label"/>
+                        <ComboBox fx:id="cmbStartTime" promptText="Start" styleClass="filter-combo" maxWidth="Infinity"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="End Time *" styleClass="filter-label"/>
+                        <ComboBox fx:id="cmbEndTime" promptText="End" styleClass="filter-combo" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+            </GridPane>
+            
+            <!-- Reason for relocation -->
+            <VBox spacing="6">
+                <Label text="Reason for Relocation *" styleClass="filter-label"/>
+                <TextArea fx:id="txtReason" promptText="Describe the reason for booking this room (e.g. Projector broken, examination, maintenance)..." prefHeight="80" wrapText="true" style="-fx-font-size: 13px;"/>
+            </VBox>
+            
+            <Separator/>
+            
+            <!-- Reserve Button -->
+            <HBox alignment="CENTER_RIGHT" spacing="12">
+                <Button onAction="#handleClearForm" text="Reset Fields" styleClass="btn-secondary"/>
+                <Button onAction="#handleReserveClassroom" text="Reserve Classroom" styleClass="btn-primary" style="-fx-padding: 12 30;"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,42 @@
+# Compiled class files
+target/
+out/
+*.class
+
+# Maven
+.mvn/
+apache-maven-3.9.16/
+apache-maven.zip
+
+# JavaFX SDK (bundled locally)
+javafx-sdk-21.0.2/
+
+# SQLite database (generated at runtime)
+classroom_scheduler.db
+
+# SQLite JDBC driver (managed by Maven)
+sqlite-jdbc.jar
+
+# IDE files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+*.swp
+*.swo
+*~
+.vscode/
+.gemini/
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Log files
+*.log

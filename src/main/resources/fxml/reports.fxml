@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.ReportsController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24">
+        <!-- Page Header -->
+        <VBox spacing="4">
+            <Label text="Reports &amp; Analytics" styleClass="page-title"/>
+            <Label text="Generate room utilization reports and booking history with export options (Main Admin only)." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <!-- Filter Panel -->
+        <VBox styleClass="glass-panel" spacing="16">
+            <Label text="Report Filters" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+            
+            <HBox spacing="20" alignment="CENTER_LEFT">
+                <VBox spacing="6">
+                    <Label text="Start Date" styleClass="filter-label"/>
+                    <DatePicker fx:id="dpStartDate" promptText="Start Date" style="-fx-font-size: 13px;"/>
+                </VBox>
+                <VBox spacing="6">
+                    <Label text="End Date" styleClass="filter-label"/>
+                    <DatePicker fx:id="dpEndDate" promptText="End Date" style="-fx-font-size: 13px;"/>
+                </VBox>
+                <VBox spacing="6">
+                    <Label text="Status Filter" styleClass="filter-label"/>
+                    <ComboBox fx:id="cmbStatusFilter" promptText="All Statuses" styleClass="filter-combo" prefWidth="150"/>
+                </VBox>
+                <VBox spacing="6">
+                    <Label text="Room Filter" styleClass="filter-label"/>
+                    <TextField fx:id="txtRoomFilter" promptText="Room name..." styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;" prefWidth="150"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox spacing="6">
+                    <Label text=" " styleClass="filter-label"/>
+                    <HBox spacing="10">
+                        <Button onAction="#handleGenerateReport" text="📊 Generate" styleClass="btn-primary" style="-fx-padding: 8 20;"/>
+                        <Button onAction="#handleExportCsv" text="📥 Export CSV" styleClass="btn-secondary" style="-fx-padding: 8 20;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+        </VBox>
+        
+        <!-- Room Utilization Summary -->
+        <VBox styleClass="glass-panel" spacing="16">
+            <Label text="Room Utilization Summary" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+            
+            <TableView fx:id="tblUtilization" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="colUtilRoom" text="Room Name" prefWidth="200"/>
+                    <TableColumn fx:id="colUtilBookings" text="Approved Bookings" prefWidth="180"/>
+                    <TableColumn fx:id="colUtilBar" text="Usage Level" prefWidth="200"/>
+                </columns>
+            </TableView>
+        </VBox>
+        
+        <!-- Booking History -->
+        <VBox styleClass="glass-panel" spacing="16">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="Booking History" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblResultCount" text="" styleClass="filter-label"/>
+            </HBox>
+            
+            <TableView fx:id="tblHistory" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colHistId" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="colHistRoom" text="Room" prefWidth="120"/>
+                    <TableColumn fx:id="colHistCourse" text="Course" prefWidth="150"/>
+                    <TableColumn fx:id="colHistRequester" text="Requester" prefWidth="120"/>
+                    <TableColumn fx:id="colHistDate" text="Date" prefWidth="100"/>
+                    <TableColumn fx:id="colHistTime" text="Time Slot" prefWidth="140"/>
+                    <TableColumn fx:id="colHistStatus" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="colHistReason" text="Reason" prefWidth="180"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</ScrollPane>

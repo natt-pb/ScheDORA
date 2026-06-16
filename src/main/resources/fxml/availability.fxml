@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.AvailabilityController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24">
+        <!-- Page Header -->
+        <VBox spacing="4">
+            <Label text="Search Classroom Availability" styleClass="page-title"/>
+            <Label text="Filter campus classrooms by date, time slot, building, and capacity to check availability." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <!-- Search Criteria Bar -->
+        <HBox styleClass="glass-panel" spacing="16" alignment="CENTER_LEFT" style="-fx-padding: 12 16;">
+            <VBox spacing="4" prefWidth="180">
+                <Label text="Target Date" styleClass="filter-label"/>
+                <DatePicker fx:id="dpDate" promptText="Choose Date" style="-fx-font-size: 13px;" maxWidth="Infinity"/>
+            </VBox>
+            
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Time Slot" styleClass="filter-label"/>
+                <ComboBox fx:id="cmbTimeSlot" promptText="Select Slot" styleClass="filter-combo" maxWidth="Infinity"/>
+            </VBox>
+            
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Building Block" styleClass="filter-label"/>
+                <ComboBox fx:id="cmbBuilding" promptText="All Blocks" styleClass="filter-combo" maxWidth="Infinity"/>
+            </VBox>
+            
+            <VBox spacing="4" prefWidth="120">
+                <Label text="Min Capacity" styleClass="filter-label"/>
+                <TextField fx:id="txtCapacity" promptText="e.g. 50" styleClass="search-field" style="-fx-background-radius: 8px; -fx-border-radius: 8px;"/>
+            </VBox>
+            
+            <VBox spacing="4" alignment="BOTTOM_CENTER">
+                <Button onAction="#handleSearch" text="Search Rooms" styleClass="btn-primary" style="-fx-padding: 8 20;"/>
+            </VBox>
+        </HBox>
+        
+        <!-- Results Table -->
+        <VBox styleClass="glass-panel" spacing="12" VBox.vgrow="ALWAYS">
+            <Label text="Search Results" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+            <TableView fx:id="tblAvailability" prefHeight="350">
+                <columns>
+                    <TableColumn fx:id="colRoomName" text="Classroom Name" prefWidth="150"/>
+                    <TableColumn fx:id="colBuilding" text="Building Block" prefWidth="180"/>
+                    <TableColumn fx:id="colCapacity" text="Capacity" prefWidth="100"/>
+                    <TableColumn fx:id="colRoomType" text="Room Type" prefWidth="120"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="120"/>
+                    <TableColumn fx:id="colAction" text="Action" prefWidth="110"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</ScrollPane>

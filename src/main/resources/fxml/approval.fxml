@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.ApprovalController" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" stylesheets="@../css/style.css">
+    <VBox styleClass="main-canvas" spacing="24">
+        <!-- Page Header -->
+        <VBox spacing="4">
+            <Label text="Booking Approvals" styleClass="page-title"/>
+            <Label text="Manage and authorize classroom relocation requests submitted by Course Representatives (Administrator only)." styleClass="page-subtitle"/>
+        </VBox>
+        
+        <!-- Approvals List Table -->
+        <VBox styleClass="glass-panel" spacing="16">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label text="Pending Booking Requests" styleClass="stats-title" style="-fx-font-size: 16px;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button onAction="#handleRefresh" text="🔄 Refresh Requests" styleClass="btn-secondary" style="-fx-padding: 6 12;"/>
+            </HBox>
+            
+            <TableView fx:id="tblApprovals" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colBookingId" text="Booking ID" prefWidth="90"/>
+                    <TableColumn fx:id="colRequester" text="Representative" prefWidth="140"/>
+                    <TableColumn fx:id="colCourse" text="Course Name" prefWidth="150"/>
+                    <TableColumn fx:id="colRoom" text="Target Room" prefWidth="110"/>
+                    <TableColumn fx:id="colDate" text="Target Date" prefWidth="100"/>
+                    <TableColumn fx:id="colTime" text="Time Slot" prefWidth="140"/>
+                    <TableColumn fx:id="colReason" text="Relocation Reason" prefWidth="180"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="140"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</ScrollPane>

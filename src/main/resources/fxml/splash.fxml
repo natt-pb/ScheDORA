@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classroomscheduler.controller.SplashController" prefWidth="600" prefHeight="450" style="-fx-background-color: #FFFFFF;">
+    <VBox alignment="CENTER" spacing="20">
+        <padding>
+            <Insets top="40" bottom="40" left="60" right="60"/>
+        </padding>
+        
+        <!-- Logo Image -->
+        <ImageView fx:id="splashImage" fitWidth="340" fitHeight="340" preserveRatio="true" smooth="true">
+            <image>
+                <Image url="@../images/splash_screen.png"/>
+            </image>
+        </ImageView>
+        
+        <!-- Loading Indicator -->
+        <HBox alignment="CENTER" spacing="12">
+            <ProgressIndicator fx:id="progressIndicator" prefWidth="24" prefHeight="24" style="-fx-progress-color: #1B2A4A;"/>
+            <Label fx:id="lblStatus" text="Loading system..." style="-fx-font-size: 13px; -fx-text-fill: #5d6b82; -fx-font-family: 'Segoe UI';"/>
+        </HBox>
+    </VBox>
+</StackPane>
