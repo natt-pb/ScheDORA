@@ -39,7 +39,6 @@ No external database needed — SQLite runs embedded.
 
    ```bash
    git clone <repository-url>
-   cd ScheDULE
    ```
 
 2. **Verify Java version**
