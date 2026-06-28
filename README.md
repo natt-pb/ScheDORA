@@ -1,8 +1,6 @@
-Here's the simplified version:
 
 ---
-
-# Schedora — Book Smart. Learn Better.
+# ScheDORA — Book Smart. Learn Better.
 
 A JavaFX desktop app for managing classroom bookings and relocations in academic institutions.
 
@@ -10,7 +8,7 @@ A JavaFX desktop app for managing classroom bookings and relocations in academic
 
 ## Overview
 
-Schedora lets students, lecturers, and facility managers coordinate room reservations, manage timetables, and handle booking approvals. It detects scheduling conflicts in real time and enforces rules: weekdays only, 6:30 AM–8:30 PM, max 3-hour sessions.
+ScheDORA lets students, lecturers, and facility managers coordinate room reservations, manage timetables, and handle booking approvals. It detects scheduling conflicts in real time and enforces rules: weekdays only, 6:30 AM–8:30 PM, max 3-hour sessions.
 
 ---
 
@@ -79,7 +77,7 @@ On first launch, the database is auto-created and seeded with default data.
 
 ## Key Features
 
-- Booking lifecycle: Pending → Approved → Rejected → Cancelled → Released
+- Booking lifecycle: Pending → Approved → Rejected → Canceled → Released
 - Conflict detection against timetable and existing bookings
 - Auto-routing to the facility manager responsible for the target block
 - Bulk import of students and timetable entries via CSV
