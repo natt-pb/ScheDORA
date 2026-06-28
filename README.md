@@ -33,15 +33,52 @@ MVC — FXML views → Controllers → Services → DAOs → SQLite
 No external database needed — SQLite runs embedded.
 
 ---
+## Setup and Installation
 
-## Setup & Run
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd ScheDULE
+   ```
+
+2. **Verify Java version**
+
+   ```bash
+   java -version
+   ```
+
+   Ensure the output shows version 21 or later.
+
+3. **Build the project**
+
+   Using the bundled Maven wrapper:
+
+   ```bash
+   apache-maven-3.9.16/bin/mvn clean compile
+   ```
+
+   Or with a system-installed Maven:
+
+   ```bash
+   mvn clean compile
+   ```
+
+## Running the Application
+
+Launch the application using the JavaFX Maven plugin:
 
 ```bash
-git clone <repository-url>
-cd ScheDULE
-mvn clean compile
 mvn javafx:run
 ```
+
+Or using the bundled Maven:
+
+```bash
+apache-maven-3.9.16/bin/mvn javafx:run
+```
+
+The application opens with a splash screen that transitions to the login page. On first launch, the database is automatically initialized with the schema, default users, blocks, rooms, sample timetable entries, and sample bookings
 
 On first launch, the database is auto-created and seeded with default data.
 
