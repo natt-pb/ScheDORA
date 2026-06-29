@@ -56,7 +56,7 @@
             <!-- Accent Colour -->
             <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="settings-section" spacing="16">
                 <VBox spacing="4">
-                    <Label text="✨  Accent Colour" styleClass="settings-section-title"/>
+                    <Label text="Accent Colour" styleClass="settings-section-title"/>
                     <Label text="Applied to buttons, badges, and active items" styleClass="settings-section-subtitle"/>
                 </VBox>
                 
